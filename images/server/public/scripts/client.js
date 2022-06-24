@@ -9,15 +9,27 @@ function onReady() {
     $('#subButton').on('click', handleClick);
     $('#multiButton').on('click', handleClick);
     $('#divButton').on('click', handleClick);
-    $('#equalButton').on('click', handleClick);
-    $('#clearButton').on('click', handleClick);
+    $('#equalButton').on('click', handleSubmit);
+    $('#clearButton').on('click', handleClear);
 }
-
+function handleClear(){
+   $('#numOne').val(''),
+    $('#numTwo').val('')
+}
+function handleSubmit(){
+    const newMath= {
+    numOne: $('#numOne').val(),
+    numTwo: $('#numTwo').val(),
+    operator: operator
+    }
+    //ajax post to server
+    //.then call render function
+}
 // function handleClick() {
 //     //collect inputs...
-//     const newQuote = {
-//         author: $('#author').val(),
-//         text: $('#text').val()
+//     const newMath = {
+//         numOne: $('#numOne').val(),
+//         numTwo: $('#numTwo').val()
 //     }
 //     console.log(newQuote);
 
