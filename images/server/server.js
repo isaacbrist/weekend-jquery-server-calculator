@@ -1,17 +1,17 @@
 // // Imports
-// const express = require('express');
-// const bodyParser = require('body-parser');
+const express = require('express');
+const bodyParser = require('body-parser');
 // const quoteList = require('./modules/quotes.js');
 
-// //Make an instance of a server
-// const app = express();
-// const PORT = 5000;
+//Make an instance of a server
+const app = express();
+const PORT = 5000;
 
-// //Serve Static Files
-// app.use(express.static('server/public'));
+//Serve Static Files
+app.use(express.static('server/public'));
 
-// // Setup Middlewares
-// app.use(bodyParser.urlencoded({ extended: true }));
+// Setup Middlewares
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // //localhost:5000/quotes
 // app.get('/quotes', function(req, res) {
@@ -34,6 +34,6 @@
 // })
 
 // //run the server, on the port we want.
-// app.listen(PORT, function() {
-//     console.log('SERVER RUNNING ON PORT', PORT)
-// });
+app.listen(PORT, function() {
+    console.log('SERVER RUNNING ON PORT', PORT)
+});

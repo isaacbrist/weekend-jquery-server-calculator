@@ -1,13 +1,17 @@
-// $(onReady);
+$(onReady);
 
-// function onReady() {
-//     //GET DATA
-//     getQuotes();
-//     // getSecretCode();
+function onReady() {
+    //GET DATA
+  //  getQuotes();
 
-//     $('#submit').on('click', handleClick);
 
-// }
+    $('#addButton').on('click', handleClick);
+    $('#subButton').on('click', handleClick);
+    $('#multiButton').on('click', handleClick);
+    $('#divButton').on('click', handleClick);
+    $('#equalButton').on('click', handleClick);
+    $('#clearButton').on('click', handleClick);
+}
 
 // function handleClick() {
 //     //collect inputs...
