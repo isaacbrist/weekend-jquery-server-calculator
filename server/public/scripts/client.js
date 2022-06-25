@@ -15,14 +15,14 @@ function onReady() {
 }
 let operator;
 
-// function getMessage() {
-//   $.ajax({
-//     url: '/message',
-//     method: 'GET',
-//   }).then((response) => {
-//     console.log(response);
-//   });
-// }
+function getMessage() {
+  $.ajax({
+    url: '/message',
+    method: 'GET',
+  }).then((response) => {
+    console.log(response);
+  });
+}
 function handleClear() {
   $('#numOne').val('');
   $('#numTwo').val('');
@@ -35,8 +35,22 @@ function handleSubmit() {
     numTwo: $('#numTwo').val(),
     operator: operator,
   };
+  console.log(newMath);
   //ajax post to server
   //.then call render function
+  $.ajax({
+    url: '/maths',
+    method: 'POST',
+    data: newMath, //data here becomes req.body on the server
+  })
+    .then(function (response) {
+      console.log(response);
+      getMaths();
+    })
+    .catch(function (error) {
+      console.log(error);
+      alert('ERROR IN POST /maths');
+    });
 }
 
 function handleOperator() {
@@ -44,50 +58,37 @@ function handleOperator() {
   operator = $(this).closest('button').data('operator');
   console.log(operator);
 }
+
+function getMaths() {
+  console.log('start of getMaths');
+  // Get all maths from the server!
+  $.ajax({
+    url: '/maths',
+    method: 'GET',
+  })
+    .then(function (response) {
+      console.log(response);
+      //response is whatever res.send() sent us.
+      // render to DOM
+      // render(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+      alert('ERROR IN GET /maths');
+    });
+
+  console.log('end of getMaths');
+}
+
 // function handleClick() {
 //     //collect inputs...
 //     const newMath = {
 //         numOne: $('#numOne').val(),
 //         numTwo: $('#numTwo').val()
 //     }
-//     console.log(newMath);
 
-//     //ajax request to server
-//     // data should always be an object!
-//     $.ajax({
-//         url: '/maths',
-//         method: 'POST',
-//         data: newMath //data here becomes req.body on the server
-//     }).then(function(response){
-//         console.log(response);
 
-//         //trigger a get!
-//         getQuotes();
-//     })
 
-// }
-
-// function getQuotes() {
-//     console.log('start of getQuotes')
-//     // Get all quotes from the server!
-//     // AJAX
-//     $.ajax({
-//         url: '/quotes',
-//         method: 'GET'
-//     }).then(function(response) {
-//         console.log(response);
-//         //response is whatever res.send() sent us.
-//         // render to DOM
-//         render(response);
-//     }).catch(function(error){
-//         //404, 500, etc
-//         console.log(error);
-//         alert('ERROR IN GET /quotes')
-//     })
-
-//     console.log('end of getQuotes')
-
-// }
 
 // function render(quoteList) {
 //     //empty -- dont want dupes
