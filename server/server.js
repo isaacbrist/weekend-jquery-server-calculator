@@ -13,13 +13,12 @@ app.use(express.static('server/public'));
 // Setup Middlewares
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// //localhost:5000/quotes
-// app.get('/quotes', function(req, res) {
-//     console.log('IN GET QUOTES');
-//     res.send(quoteList);
-// });
 
-// app.post('/quotes',  (req, res) => {
+app.get('/message', function (req, res) {
+  res.send(['hello', 'there', 'isaac']);
+});
+
+// app.post('/maths',  (req, res) => {
 //     //well, where is the quote...?
 //     console.log('POST /quotes', req.body);
 //     // save our quote...
@@ -34,6 +33,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // })
 
 // //run the server, on the port we want.
-app.listen(PORT, function() {
-    console.log('SERVER RUNNING ON PORT', PORT)
+app.listen(PORT, function () {
+  console.log('SERVER RUNNING ON PORT', PORT);
 });

@@ -1,29 +1,48 @@
 $(onReady);
 
 function onReady() {
-    //GET DATA
+  //GET DATA
   //  getQuotes();
 
+  getMessage();
 
-    $('#addButton').on('click', handleClick);
-    $('#subButton').on('click', handleClick);
-    $('#multiButton').on('click', handleClick);
-    $('#divButton').on('click', handleClick);
-    $('#equalButton').on('click', handleSubmit);
-    $('#clearButton').on('click', handleClear);
+  $('#addButton').on('click', handleOperator);
+  $('#subButton').on('click', handleOperator);
+  $('#multiButton').on('click', handleOperator);
+  $('#divButton').on('click', handleOperator);
+  $('#equalButton').on('click', handleSubmit);
+  $('#clearButton').on('click', handleClear);
 }
-function handleClear(){
-   $('#numOne').val(''),
-    $('#numTwo').val('')
+let operator;
+
+// function getMessage() {
+//   $.ajax({
+//     url: '/message',
+//     method: 'GET',
+//   }).then((response) => {
+//     console.log(response);
+//   });
+// }
+function handleClear() {
+  $('#numOne').val('');
+  $('#numTwo').val('');
+  operator = undefined;
+  console.log('deleted');
 }
-function handleSubmit(){
-    const newMath= {
+function handleSubmit() {
+  const newMath = {
     numOne: $('#numOne').val(),
     numTwo: $('#numTwo').val(),
-    operator: operator
-    }
-    //ajax post to server
-    //.then call render function
+    operator: operator,
+  };
+  //ajax post to server
+  //.then call render function
+}
+
+function handleOperator() {
+  //Figure out the operator that was clicked and assign it to an operator variable
+  operator = $(this).closest('button').data('operator');
+  console.log(operator);
 }
 // function handleClick() {
 //     //collect inputs...
@@ -31,14 +50,14 @@ function handleSubmit(){
 //         numOne: $('#numOne').val(),
 //         numTwo: $('#numTwo').val()
 //     }
-//     console.log(newQuote);
+//     console.log(newMath);
 
 //     //ajax request to server
 //     // data should always be an object!
 //     $.ajax({
-//         url: '/quotes',
+//         url: '/maths',
 //         method: 'POST',
-//         data: newQuote //data here becomes req.body on the server
+//         data: newMath //data here becomes req.body on the server
 //     }).then(function(response){
 //         console.log(response);
 
@@ -46,10 +65,7 @@ function handleSubmit(){
 //         getQuotes();
 //     })
 
-
 // }
-
-
 
 // function getQuotes() {
 //     console.log('start of getQuotes')
@@ -64,7 +80,7 @@ function handleSubmit(){
 //         // render to DOM
 //         render(response);
 //     }).catch(function(error){
-//         //404, 500, etc 
+//         //404, 500, etc
 //         console.log(error);
 //         alert('ERROR IN GET /quotes')
 //     })
@@ -82,5 +98,5 @@ function handleSubmit(){
 //     for(let quote of quoteList) {
 //         $('#output').append(`<li>${quote.text} -- ${quote.author} </li>`)
 //     }
-    
+
 // }
