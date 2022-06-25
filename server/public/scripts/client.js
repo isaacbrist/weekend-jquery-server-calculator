@@ -68,9 +68,8 @@ function getMaths() {
   })
     .then(function (response) {
       console.log(response);
-      //response is whatever res.send() sent us.
       // render to DOM
-      // render(response);
+      render(response);
     })
     .catch(function (error) {
       console.log(error);
@@ -80,24 +79,16 @@ function getMaths() {
   console.log('end of getMaths');
 }
 
-// function handleClick() {
-//     //collect inputs...
-//     const newMath = {
-//         numOne: $('#numOne').val(),
-//         numTwo: $('#numTwo').val()
-//     }
 
+//render function
+function render(mathList) {
+   
+    $('#history').empty();
 
+    //append it to the DOM
 
+    for(let math of mathList) {
+        $('#history').append(`<li>${math.numOne} ${math.operator} ${math.numTwo} ${math.result}</li>`)
+    }
 
-// function render(quoteList) {
-//     //empty -- dont want dupes
-//     $('#output').empty();
-
-//     //append it to the DOM
-
-//     for(let quote of quoteList) {
-//         $('#output').append(`<li>${quote.text} -- ${quote.author} </li>`)
-//     }
-
-// }
+}
