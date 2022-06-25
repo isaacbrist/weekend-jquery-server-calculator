@@ -2,7 +2,6 @@ $(onReady);
 
 function onReady() {
   //GET DATA
-  //  getQuotes();
 
   getMaths();
 
@@ -13,8 +12,8 @@ function onReady() {
   $('#equalButton').on('click', handleSubmit);
   $('#clearButton').on('click', handleClear);
 }
-let operator;
 
+//test GET
 // function getMessage() {
 //   $.ajax({
 //     url: '/message',
@@ -23,6 +22,12 @@ let operator;
 //     console.log(response);
 //   });
 // }
+let operator;
+function handleOperator() {
+  //Figure out the operator that was clicked and assign it to an operator variable
+  operator = $(this).closest('button').data('operator');
+  console.log(operator);
+}
 function handleClear() {
   $('#numOne').val('');
   $('#numTwo').val('');
@@ -54,11 +59,6 @@ function handleSubmit() {
     });
 }
 
-function handleOperator() {
-  //Figure out the operator that was clicked and assign it to an operator variable
-  operator = $(this).closest('button').data('operator');
-  console.log(operator);
-}
 
 function getMaths() {
   console.log('start of getMaths');

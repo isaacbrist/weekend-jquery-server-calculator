@@ -1,4 +1,2 @@
-const mathList= [{
-
-}]
+const mathList = [];
 module.exports = mathList;
