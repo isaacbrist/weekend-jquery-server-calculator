@@ -13,17 +13,18 @@ app.use(express.static('server/public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 //test get
-app.get('/message', function (req, res) {
-  res.send(['hello', 'there', 'isaac']);
+app.get('/maths', function (req, res) {
+  console.log('in GET/maths')
+  res.send(mathList);
 });
 
-// app.post('/maths',  (req, res) => {
-//     console.log('POST /maths', req.body);
-//     mathList.push(req.body)
+app.post('/maths',  (req, res) => {
+    console.log('in POST /maths', req.body);
+    mathList.push(req.body)
 
-//     // send back response...
-//     res.sendStatus(201);
-// })
+    // send back response...
+    res.sendStatus(201);
+})
 
 
 app.listen(PORT, function () {

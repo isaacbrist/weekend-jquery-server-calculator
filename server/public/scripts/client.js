@@ -4,7 +4,7 @@ function onReady() {
   //GET DATA
   //  getQuotes();
 
-  getMessage();
+  getMaths();
 
   $('#addButton').on('click', handleOperator);
   $('#subButton').on('click', handleOperator);
@@ -15,14 +15,14 @@ function onReady() {
 }
 let operator;
 
-function getMessage() {
-  $.ajax({
-    url: '/message',
-    method: 'GET',
-  }).then((response) => {
-    console.log(response);
-  });
-}
+// function getMessage() {
+//   $.ajax({
+//     url: '/message',
+//     method: 'GET',
+//   }).then((response) => {
+//     console.log(response);
+//   });
+// }
 function handleClear() {
   $('#numOne').val('');
   $('#numTwo').val('');
@@ -30,6 +30,7 @@ function handleClear() {
   console.log('deleted');
 }
 function handleSubmit() {
+  console.log('handleSubmit');
   const newMath = {
     numOne: $('#numOne').val(),
     numTwo: $('#numTwo').val(),
@@ -79,16 +80,17 @@ function getMaths() {
   console.log('end of getMaths');
 }
 
-
 //render function
 function render(mathList) {
-   
-    $('#history').empty();
+  console.log('in render');
+  $('#history').empty();
 
-    //append it to the DOM
+  //append it to the DOM
 
-    for(let math of mathList) {
-        $('#history').append(`<li>${math.numOne} ${math.operator} ${math.numTwo} ${math.result}</li>`)
-    }
-
+  for (let math of mathList) {
+    $('#history').append(
+        `<li>${math.numOne} ${math.operator} ${math.numTwo} ${math.result}</li>`
+      );
+  }
+  console.log('end render');
 }
