@@ -60,52 +60,7 @@ app.post('/maths', (req, res) => {
   mathList.push(newMath);
   res.sendStatus(201);
 });
-// calculations(req.body);
-//   mathList.push(req.body);
-//   // send back response
-//   res.sendStatus(201);
-// });
 
-//function to take in the new math, use the included operator to calculate the result,
-//and return the result as a new property of the object.
-// function calculations() {
-//   console.log('in calculations');
-//   let data = req.body;
-//   let operator = data.operator;
-//   let numOne = Number(data.numberOne);
-//   let numTwo = Number(data.numberTwo);
-//   switch (operator) {
-//     case '+':
-//       result = numOne + numTwo;
-//       console.log(result);
-//       break;
-//     case '-':
-//       result = numOne - numTwo;
-//       console.log(result);
-//       break;
-//     case '*':
-//       result = numOne * numTwo;
-//       console.log(result);
-//       break;
-//     case '/':
-//       result = numOne / numTwo;
-//       console.log(result);
-//     default:
-//       res
-//         .status(400)
-//         .send(`Invalid operator ${operator}. Please input a valid operator`);
-//       break;
-//   }
-//   // The newly calculated math
-//   newMath = {
-//     numOne: numOne,
-//     operator: operator,
-//     numTwo: numTwo,
-//     answer: result,
-//   };
-//   mathList.push(newMath);
-//   res.sendStatus(200);
-// }
 app.listen(PORT, function () {
   console.log('SERVER RUNNING ON PORT', PORT);
 });

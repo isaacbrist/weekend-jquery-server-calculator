@@ -13,15 +13,6 @@ function onReady() {
   $('#clearButton').on('click', handleClear);
 }
 
-//test GET
-// function getMessage() {
-//   $.ajax({
-//     url: '/message',
-//     method: 'GET',
-//   }).then((response) => {
-//     console.log(response);
-//   });
-// }
 let operator;
 function handleOperator() {
   //Figure out the operator that was clicked and assign it to an operator variable
@@ -42,8 +33,7 @@ function handleSubmit() {
     operator: operator,
   };
   console.log(newMath);
-  //ajax post to server
-  //.then call render function
+
   $.ajax({
     url: '/maths',
     method: 'POST',
@@ -57,6 +47,8 @@ function handleSubmit() {
       console.log(error);
       alert('ERROR IN POST /maths');
     });
+  $('#numOne').val('');
+  $('#numTwo').val('');
 }
 
 function getMaths() {
