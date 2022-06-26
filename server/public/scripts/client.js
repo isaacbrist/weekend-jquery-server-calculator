@@ -59,7 +59,6 @@ function handleSubmit() {
     });
 }
 
-
 function getMaths() {
   console.log('start of getMaths');
   // Get all maths from the server!
@@ -89,8 +88,8 @@ function render(mathList) {
 
   for (let math of mathList) {
     $('#history').append(
-        `<li>${math.numOne} ${math.operator} ${math.numTwo} ${math.result}</li>`
-      );
+      `<li>${math.numOne} ${math.operator} ${math.numTwo} = ${math.answer}</li>`
+    );
   }
   console.log('end render');
 }
